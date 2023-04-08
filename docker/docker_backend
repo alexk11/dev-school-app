@@ -1,0 +1,6 @@
+FROM openjdk:8
+
+ADD ./build/libs/dev-school-app-1.0-SNAPSHOT.jar ./app/
+CMD ["java", "-jar", "./app/dev-school-app-1.0-SNAPSHOT.jar"]
+
+EXPOSE 8081

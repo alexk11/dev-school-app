@@ -1,0 +1,31 @@
+version: "1.0"
+services:
+  backend:
+    build: ../dev-school-app/
+    ports:
+      - 8080:8080
+    environment:
+      - spring.datasource.url=jdbc:postgresql://10.176.161.168:5432/devschool?user=postgres&password=postgres
+    networks:
+      - default
+  
+  frontend:
+    build: ../dev-school-front-app/
+    ports:
+      - 8081:8081
+    environment:
+      - ktor.backend.host=backend
+      - ktor.backend.port=8080
+    networks:
+      - default
+ 
+  database:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: devschool
+    networks:
+      - default

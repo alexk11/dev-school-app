@@ -1,0 +1,6 @@
+FROM openjdk:8
+
+ADD ./build/libs/devschool-front-app-server-1.0.0.jar ./app/
+CMD ["java", "-jar", "./app/devschool-front-app-server-1.0.0.jar"]
+
+EXPOSE 8080
